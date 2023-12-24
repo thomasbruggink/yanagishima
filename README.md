@@ -14,8 +14,8 @@
 
 # Build requirements
 
-* Java 11
-* Node.js
+* Java 17
+* Node.js 20.10.0
 
 ## Quick Start
 ```

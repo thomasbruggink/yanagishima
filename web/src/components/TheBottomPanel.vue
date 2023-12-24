@@ -4,27 +4,27 @@
     <div v-if="panelResult" id="panel-body" :class="isWide ? 'container-fluid' : 'container'">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <div>
-          <span v-if="panelResult.lineNumber" class="mr-3">
+          <span v-if="panelResult.lineNumber" class="me-3">
             <i class="fa fa-file-text-o" title="query ID" data-toggle="tooltip" data-animation="false" data-placement="left"></i>
             <strong>{{panelQueryid}}</strong>
           </span>
-          <span v-if="panelResult.finishedTime" class="mr-2">
+          <span v-if="panelResult.finishedTime" class="me-2">
             <i class="fa fa-clock-o" title="Finished time" data-toggle="tooltip" data-animation="false" data-placement="left"></i>
             {{panelResult.finishedTime | extractDate}}
           </span>
-          <span v-if="panelResult.elapsedTimeMillis" class="mr-2">
-            <strong>{{(panelResult.elapsedTimeMillis / 1000).ceil(2)}}</strong><span class="text-muted ml-1">sec</span>
+          <span v-if="panelResult.elapsedTimeMillis" class="me-2">
+            <strong>{{(panelResult.elapsedTimeMillis / 1000).ceil(2)}}</strong><span class="text-muted ms-1">sec</span>
           </span>
-          <span v-if="panelResult.rawDataSize" class="mr-2">
-            <strong>{{panelResult.rawDataSize.remove('B')}}</strong><span class="text-muted ml-1">byte</span>
+          <span v-if="panelResult.rawDataSize" class="me-2">
+            <strong>{{panelResult.rawDataSize.remove('B')}}</strong><span class="text-muted ms-1">byte</span>
           </span>
-          <span v-if="panelResult.lineNumber" class="mr-2">
+          <span v-if="panelResult.lineNumber" class="me-2">
             <strong>{{panelResult.results.length | formatNumber}}</strong>
             <template v-if="panelResult.results.length !== panelResult.lineNumber -1">
               <span class="mx-1">/</span>
               <strong>{{panelResult.lineNumber - 1 | formatNumber}}</strong>
             </template>
-            <span class="text-muted ml-1">results</span>
+            <span class="text-muted ms-1">results</span>
           </span>
         </div>
         <a href="#" @click.prevent="resetPanelQueryid">

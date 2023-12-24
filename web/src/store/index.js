@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import toastr from 'toastr'
 import {HASH_KEYS, TABS} from '@/constants'
@@ -13,8 +12,6 @@ import notification from '@/store/modules/notification'
 import announce from '@/store/modules/announce'
 import * as api from '@/api'
 import * as ls from '@/store/localStorage'
-
-Vue.use(Vuex)
 
 const settings = {
   isWide: {
@@ -76,8 +73,6 @@ function initialHash () {
     tab: '',
     queryid: '',
     bookmark_id: '',
-    chart: 0,
-    pivot: 0,
     line: 0,
     table: '',
     where: '',
@@ -168,8 +163,6 @@ export default new Vuex.Store({
         queryid: '',
         tab: TABS[0].id,
         line: 0,
-        chart: 0,
-        pivot: 0,
         bookmark_id: ''
       })
     },

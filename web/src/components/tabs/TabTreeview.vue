@@ -2,7 +2,7 @@
   <div id="treeview">
     <div class="header col-12 pt-4 pb-0">
       <div class="d-flex mb-4">
-        <div v-if="datasources.length > 1" class="btn-group mr-1">
+        <div v-if="datasources.length > 1" class="btn-group me-1">
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown">
               <strong>{{datasource}}</strong>
             </button>
@@ -11,16 +11,16 @@
                   @click.prevent="setDatasource(d)" :class="{active: d === datasource}">{{d}}</a>
             </div>
           </div>
-          <div v-if="isPresto || isTrino" class="btn-group mr-1">
+          <div v-if="isPresto || isTrino" class="btn-group me-1">
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown">
-              <small class="text-muted mr-1">Catalog</small>
+              <small class="text-muted me-1">Catalog</small>
               <strong>{{catalog}}</strong></button>
             <div v-if="catalogs.length" class="dropdown-menu">
               <a v-for="c in catalogs" :key="c" class="dropdown-item" href="#"
                   @click.prevent="setCatalog(c)" :class="{active: c === catalog}">{{c}}</a>
             </div>
           </div>
-          <div class="ml-auto align-self-end">
+          <div class="ms-auto align-self-end">
             <input v-if="isPresto || isTrino" type="text" :placeholder="`Search by Table in ${catalog}`" v-model.lazy="tableQueryModel"
                class="form-control form-control-sm" v-focus>
           </div>
@@ -46,7 +46,7 @@
                     <strong>Schemas </strong><span v-if="filteredSchemata.length" class="badge badge-secondary badge-pill">{{filteredSchemata.length}}</span>
                   </p>
                   <div class="col-6 col-md-4 px-0 form-filter d-flex">
-                    <small><i class="fa fa-filter mt-1 mr-1" :class="{'text-primary': filterSchema.length, 'text-muted': !filterSchema.length}"></i></small>
+                    <small><i class="fa fa-filter mt-1 me-1" :class="{'text-primary': filterSchema.length, 'text-muted': !filterSchema.length}"></i></small>
                     <input type="text" class="pull-right form-filter-input" v-model="filterSchemaModel">
                   </div>
                 </div>
@@ -56,7 +56,7 @@
                       <a v-for="s in filteredSchemata" :key="s.name" href="#" class="list-group-item pr-0"
                         :class="{active: s.name === schema, starring: !!starTargetSchema, target: s.name === starTargetSchema}"
                         @click.prevent="setSchema(s.name)" @transitionend="s.name === starTargetSchema && finishStarring()" :id="`schema-${s.name}`">
-                        <i class="fas fa-star mr-1" :class="s.star ? 'text-warning' : 'text-muted'" :style="!s.star && 'opacity: 0.4'" @click.stop="toggleStarSchema(s)"></i>
+                        <i class="fas fa-star me-1" :class="s.star ? 'text-warning' : 'text-muted'" :style="!s.star && 'opacity: 0.4'" @click.stop="toggleStarSchema(s)"></i>
                         <BaseHighlight :sentence="s.name" :keyword="filterSchema"></BaseHighlight>
                       </a>
                     </transition-group>
@@ -76,7 +76,7 @@
                     <strong>Tables</strong> <span v-if="filteredTables.length" class="badge badge-secondary badge-pill">{{filteredTables.length}}</span>
                   </p>
                   <div class="col-6 col-md-4 px-0 form-filter d-flex">
-                    <small><i class="fa fa-filter mt-1 mr-1" :class="{'text-primary': filterTable.length, 'text-muted': !filterTable.length}"></i></small>
+                    <small><i class="fa fa-filter mt-1 me-1" :class="{'text-primary': filterTable.length, 'text-muted': !filterTable.length}"></i></small>
                     <input type="text" class="pull-right form-filter-input" v-model="filterTableModel">
                   </div>
                 </div>
@@ -105,15 +105,15 @@
                 <option v-if="item.enable.includes(tableType)" :value="i" :key="i">{{item.label}}</option>
               </template>
             </select>
-            <label class="form-check-label mr-2">
-              <input class="form-check-input mr-1" type="checkbox" v-model="isExpandColumns"><small>Expand Columns</small>
+            <label class="form-check-label me-2">
+              <input class="form-check-input me-1" type="checkbox" v-model="isExpandColumns"><small>Expand Columns</small>
             </label>
             <div class="btn-group">
               <button class="btn btn-sm btn-primary" data-dismiss="modal" @click="setSnippet">
-                <small><i class="far fa-fw fa-keyboard mr-1"></i>Set</small>
+                <small><i class="far fa-fw fa-keyboard me-1"></i>Set</small>
               </button>
               <button class="btn btn-sm btn-primary" data-dismiss="modal" @click="runSnippet">
-                <small><i class="fa fa-fw fa-play mr-1"></i><strong>Run</strong></small>
+                <small><i class="fa fa-fw fa-play me-1"></i><strong>Run</strong></small>
               </button>
             </div>
           </div>
@@ -123,17 +123,17 @@
         <template v-else>
           <div class="card">
             <div class="card-header">
-              <a href="#" class="text-muted mr-2" @click.prevent="clearTableQuery"><i class="fa fa-times"></i></a>
+              <a href="#" class="text-muted me-2" @click.prevent="clearTableQuery"><i class="fa fa-times"></i></a>
               "<strong>{{tableQuery}}</strong>" in {{catalog}}
               <template v-if="tableSearchResponse.length">
-                <strong class="ml-2">{{tableSearchResponse.length}}</strong>
+                <strong class="ms-2">{{tableSearchResponse.length}}</strong>
                 results
               </template>
             </div>
             <div class="list-group list-group-flush">
               <template v-if="loadingTableSearch">
                 <div class="list-group-item">
-                  <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Searching
+                  <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Searching
                 </div>
               </template>
               <template v-else>
@@ -170,7 +170,7 @@
                   <th>
                     <span class="d-inline-flex align-items-center">
                       Columns
-                      <span class="badge badge-secondary badge-pill ml-1">{{columns.length}}</span>
+                      <span class="badge badge-secondary badge-pill ms-1">{{columns.length}}</span>
                     </span>
                   </th>
                   <th width="20%">Type</th>
@@ -204,7 +204,6 @@
 import toastr from 'toastr'
 import {mapState, mapGetters} from 'vuex'
 import util from '@/mixins/util'
-import $ from 'jquery'
 
 export default {
   name: 'TabTreeview',
@@ -397,6 +396,8 @@ export default {
         snippets.unshift(defaultSnippet)
         return snippets
       }
+
+      return undefined
     }
   },
   watch: {
@@ -453,7 +454,7 @@ export default {
     table (val) {
       if (val) {
         this.$store.dispatch('treeview/getColumns')
-        $('#columnsTab li:first-child a').tab('show')
+        // $('#columnsTab li:first-child a').tab('show')
       }
     },
     tableQuery () {
@@ -475,7 +476,7 @@ export default {
 
     this.$store.dispatch('treeview/getRoot')
   },
-  beforeDestroy () {
+  beforeUnmount () {
     this.$store.commit('setHashItem', {table: '', where: ''})
   },
   methods: {

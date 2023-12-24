@@ -6,7 +6,7 @@
           <div id="header-upper" class="py-2">
             <div class="row align-items-center">
               <div class="col-6">
-                <h1 id="logo"><a :href="buildTopUrl()"><span id="logo-figure" class="mr-2"></span>{{sitename}}</a><span class="ml-2 font-weight-normal">{{version}}</span></h1>
+                <h1 id="logo"><a :href="buildTopUrl()"><span id="logo-figure" class="me-2"></span>{{sitename}}</a><span class="ms-2 font-weight-normal">{{version}}</span></h1>
               </div>
               <div class="col-6 text-right">
                 Readonly
@@ -23,41 +23,41 @@
                 <strong>Loading</strong>
               </template>
               <template v-else>
-                <span class="mr-3" v-if="response && response.error || error">
-                  <strong><i class="fa fa-exclamation-triangle text-danger mr-1"></i>Error</strong>
+                <span class="me-3" v-if="response && response.error || error">
+                  <strong><i class="fa fa-exclamation-triangle text-danger me-1"></i>Error</strong>
                 </span>
                 <span v-else-if="response && response.results"></span>
                 <span v-else><strong>No result</strong></span>
-                <span class="mr-3" v-if="response && response.lineNumber">
+                <span class="me-3" v-if="response && response.lineNumber">
                   <i class="fas fa-file-alt" title="Publish ID" data-toggle="tooltip"
                       data-placement="left"></i>
                   <strong>{{publishId}}</strong>
                 </span>
-                <span class="mr-3" v-if="response && response.queryid">
-                  <a :href="buildShareUrl(datasource, engine, queryid, chart, pivot, line)">{{queryid}}</a>
+                <span class="me-3" v-if="response && response.queryid">
+                  <a :href="buildShareUrl(datasource, engine, queryid, line)">{{queryid}}</a>
                 </span>
-                <span class="mr-2" v-if="response && response.finishedTime">
+                <span class="me-2" v-if="response && response.finishedTime">
                   <i class="fa fa-calendar" title="Finished time" data-toggle="tooltip" data-animation="false"
                       data-placement="left"></i>
                   {{response.finishedTime | extractDate}}
                 </span>
-                <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.elapsedTimeMillis">
+                <span class="me-2 d-md-none d-lg-inline" v-if="response && response.elapsedTimeMillis">
                   <strong>{{(response.elapsedTimeMillis / 1000).ceil(2)}}</strong><span
-                  class="text-muted ml-1">sec</span>
+                  class="text-muted ms-1">sec</span>
                 </span>
-                <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.rawDataSize">
-                  <strong>{{response.rawDataSize.remove('B')}}</strong><span class="text-muted ml-1">byte</span>
+                <span class="me-2 d-md-none d-lg-inline" v-if="response && response.rawDataSize">
+                  <strong>{{response.rawDataSize.remove('B')}}</strong><span class="text-muted ms-1">byte</span>
                 </span>
-                <span class="mr-2" v-if="response && response.results && response.lineNumber">
+                <span class="me-2" v-if="response && response.results && response.lineNumber">
                   <strong>{{response.results.length | formatNumber}}</strong>
                   <template v-if="response.results.length !== response.lineNumber - 1">
                     <span class="mx-1">/</span>
                     <strong>{{response.lineNumber - 1 | formatNumber}}</strong>
                   </template>
-                  <span class="text-muted ml-1">results</span>
+                  <span class="text-muted ms-1">results</span>
                 </span>
-                <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.headers">
-                  <strong>{{response.headers.length}}</strong><span class="text-muted ml-1">columns</span>
+                <span class="me-2 d-md-none d-lg-inline" v-if="response && response.headers">
+                  <strong>{{response.headers.length}}</strong><span class="text-muted ms-1">columns</span>
                 </span>
               </template>
             </div>
@@ -66,8 +66,8 @@
                 <input type="checkbox" v-model="isPretty" class="align-middle">
                 Pretty print
               </label>
-              <div class="btn-group ml-2" v-if="response && response.rawDataSize">
-                <a href="#" class="btn btn-sm btn-secondary" data-toggle="dropdown"><i class="fa fa-fw fa-download"></i><span class="d-md-none d-lg-inline ml-1">Download</span></a>
+              <div class="btn-group ms-2" v-if="response && response.rawDataSize">
+                <a href="#" class="btn btn-sm btn-secondary" data-toggle="dropdown"><i class="fa fa-fw fa-download"></i><span class="d-md-none d-lg-inline ms-1">Download</span></a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <div class="dropdown-header">header</div>
                   <a :href="buildShareDownloadUrl(publishId, false, true)" class="dropdown-item">TSV</a>
@@ -87,7 +87,7 @@
       <div class="container">
         <template v-if="loading">
           <div class="alert alert-info" role="alert">
-            <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+            <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
           </div>
         </template>
         <template v-else>
@@ -104,33 +104,8 @@
               </div>
             </div>
             <div class="alert alert-info" v-if="line">
-              <i class="fa fa-fw fa-check mr-1"></i><a href="#" class="alert-link" v-scroll-to="`#L${line}`">Line
+              <i class="fa fa-fw fa-check me-1"></i><a href="#" class="alert-link" v-scroll-to="`#L${line}`">Line
               {{line}}</a> is selected
-            </div>
-            <div class="mb-3" v-if="enableChart && chart">
-              <div class="card">
-                <div class="card-header">
-                  <strong>{{chartTypes[chart].name}}</strong>
-                </div>
-                <div class="card-body">
-                  <vue-chart :chart-type="chartTypes[chart].type" :columns="chartColumns" :rows="chartRows"
-                             :options="Object.assign({}, chartOptions, chartTypes[chart].option)"></vue-chart>
-                  <div v-if="response.lineNumber > 501" class="text-right text-muted">
-                    This data is only top 500.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mb-3" v-if="enablePivot && pivot">
-              <div class="card">
-                <div class="card-body">
-                  <pivot :data="pivotRows" :fields="[]" :row-fields="rowFields" :col-fields="colFields" :reducer="reducer" :default-show-settings="false">
-                  </pivot>
-                  <div v-if="response.lineNumber > 501" class="text-right text-muted">
-                    This data is only top 500.
-                  </div>
-                </div>
-              </div>
             </div>
             <ResultTable :result="response" :pretty="isPretty" :line="line" :readonly="true"/>
           </template>
@@ -149,12 +124,12 @@
         <div class="d-flex justify-content-between align-items-center">
           <div>
             <template v-if="visibleComment">
-              <i class="fa fa-commenting-o fa-flip-horizontal mr-1"></i>
+              <i class="fa fa-commenting-o fa-flip-horizontal me-1"></i>
               {{response.comment.updateTimeString | extractDate}}
             </template>
             <template v-else>
               <a href="#" @click.prevent="visibleComment = true">
-                <i class="fa fa-commenting fa-flip-horizontal mr-1"></i>
+                <i class="fa fa-commenting fa-flip-horizontal me-1"></i>
                 {{response.comment.updateTimeString | extractDate}}
               </a>
             </template>
@@ -181,17 +156,14 @@
 <script>
 import ResultTable from '@/components/ResultTable'
 import util from '@/mixins/util'
-import chart from '@/mixins/chart'
-import pivot from '@/mixins/pivot'
 import * as api from '@/api'
-import {SITENAME, VERSION, CHART_TYPES, CHART_OPTIONS} from '@/constants'
-import Pivot from '@marketconnect/vue-pivot-table'
-import $ from 'jquery'
+import {SITENAME, VERSION} from '@/constants'
+import { Tooltip } from 'bootstrap'
 
 export default {
   name: 'ShowView',
-  components: {ResultTable, Pivot},
-  mixins: [util, chart, pivot],
+  components: {ResultTable},
+  mixins: [util],
   data () {
     return {
       sitename: SITENAME,
@@ -201,13 +173,9 @@ export default {
       engine: '',
       queryid: '',
       line: 0,
-      chart: 0,
-      pivot: 0,
       loading: true,
       response: null,
       error: null,
-      chartTypes: CHART_TYPES,
-      chartOptions: CHART_OPTIONS,
       isQueryCollapse: false,
       visibleComment: false,
       isPretty: false
@@ -221,15 +189,9 @@ export default {
   created () {
     const params = location.search.remove('?').split('&')
     let publishId = ''
-    let chart = 0
-    let pivot = 0
     for (const param of params) {
       if (/^[a-z0-9]{32}$/.test(param)) {
         publishId = param
-      } else if (param.length === 1) {
-        chart = Number(param)
-      } else if (param === 'pivot') {
-        pivot = 1
       }
     }
     const line = Number(location.hash.remove('#L')) || 0
@@ -244,8 +206,6 @@ export default {
           this.queryid = data.queryid
           this.response = data
           this.line = line
-          this.chart = chart
-          this.pivot = pivot
           this.loading = false
           this.visibleComment = data.comment != null
           this.$store.commit('loadComplete')
@@ -256,7 +216,9 @@ export default {
     }
   },
   mounted () {
-    $('body').tooltip({selector: '[data-toggle="tooltip"]'})
+    new Tooltip(document.body, {
+      selector: '[data-toggle="tooltip"]'
+    })
   }
 }
 </script>

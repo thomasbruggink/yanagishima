@@ -77,7 +77,7 @@ const actions = {
       commit('setPanelResult', {data})
     }
   },
-  async importHistory ({commit, dispatch, rootState}, {data}) {
+  async importHistory ({commit, dispatch, rootState}) {
     const {datasource} = rootState.hash
     commit('overwriteLocalStorage', {datasource})
     dispatch('getHistories', {isMore: false})

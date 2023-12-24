@@ -12,31 +12,31 @@
               <ul class="list-unstyled mb-0">
                 <li title="Wide Screen">
                   <label :class="{'text-white': isWide}">
-                    <input type="checkbox" class="align-middle mr-1" v-model="isWide">
+                    <input type="checkbox" class="align-middle me-1" v-model="isWide">
                     Wide Screen
                   </label>
                 </li>
                 <li title="Automatically Refresh Query List">
                   <label :class="{'text-white': isAutoQlist}">
-                    <input type="checkbox" class="align-middle mr-1" v-model="isAutoQlist">
+                    <input type="checkbox" class="align-middle me-1" v-model="isAutoQlist">
                     Automatically Refresh Query List
                   </label>
                 </li>
                 <li v-if="isHttps()" title="Desktop Notification (when in background)">
                   <label :class="{'text-white': desktopNotification}">
-                    <input type="checkbox" class="align-middle mr-1" v-model="desktopNotification">
+                    <input type="checkbox" class="align-middle me-1" v-model="desktopNotification">
                     Desktop Notification (when in background)
                   </label>
                 </li>
                 <li v-if="datasources.length > 1" title="Remember Last Datasource">
                   <label :class="{'text-white': rememberDatasource}">
-                    <input type="checkbox" class="align-middle mr-1" v-model="rememberDatasource">
+                    <input type="checkbox" class="align-middle me-1" v-model="rememberDatasource">
                     Remember Last Datasource
                   </label>
                 </li>
                 <li v-if="engines[datasource] && engines[datasource].length > 1" title="Remember Last Engine">
                   <label :class="{'text-white': rememberEngine}">
-                    <input type="checkbox" class="mr-1" v-model="rememberEngine">
+                    <input type="checkbox" class="me-1" v-model="rememberEngine">
                     Remember Last Engine
                   </label>
                 </li>
@@ -119,9 +119,9 @@
             <dd class="card-body mb-0">
               <ul class="list-unstyled mb-0">
                 <li class="row mb-2">
-                  <div class="col-6 text-truncate" :title="`History (${datasource})`">History<span class="ml-1" v-if="datasources.length > 1">({{datasource}})</span></div>
+                  <div class="col-6 text-truncate" :title="`History (${datasource})`">History<span class="ms-1" v-if="datasources.length > 1">({{datasource}})</span></div>
                   <div class="col-6 pl-0 text-right">
-                    <span class="mr-1"><strong>{{history.length}}</strong> items</span>
+                    <span class="me-1"><strong>{{history.length}}</strong> items</span>
                     <div class="btn-group">
                       <button class="btn btn-sm btn-secondary selected dropdown-toggle" data-toggle="dropdown"
                               :disabled="!isLocalStorage">Action
@@ -136,9 +136,9 @@
                   </div>
                 </li>
                 <li class="row mb-2">
-                  <div class="col-6 text-truncate" :title="`Bookmark (${datasource})`">Bookmark<span class="ml-1" v-if="datasources.length > 1">({{datasource}})</span></div>
+                  <div class="col-6 text-truncate" :title="`Bookmark (${datasource})`">Bookmark<span class="ms-1" v-if="datasources.length > 1">({{datasource}})</span></div>
                   <div class="col-6 pl-0 text-right">
-                    <span class="mr-1"><strong>{{bookmarks.length}}</strong> items</span>
+                    <span class="me-1"><strong>{{bookmarks.length}}</strong> items</span>
                     <div class="btn-group">
                       <button class="btn btn-sm btn-secondary selected dropdown-toggle" data-toggle="dropdown"
                               :disabled="!isLocalStorage">Action

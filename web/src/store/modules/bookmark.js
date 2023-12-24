@@ -46,17 +46,18 @@ const actions = {
         commit('setResponse', {data: list})
       }
     } catch (e) {
+      console.log(e)
     }
     commit('setLoading', {data: false})
   },
-  async getBookmark ({state, commit, rootState}, {bookmarkId}) {
+  async getBookmark ({commit, rootState}, {bookmarkId}) {
     const {datasource, engine} = rootState.hash
     const data = await api.getBookmarksById(datasource, engine, [bookmarkId])
     if (data.bookmarkList && data.bookmarkList.length) {
       commit('editor/setInputQuery', {data: data.bookmarkList[0].query}, {root: true})
     }
   },
-  async addBookmarkItem ({state, commit, dispatch, rootState}) {
+  async addBookmarkItem ({commit, dispatch, rootState}) {
     const {datasource, engine} = rootState.hash
     const query = rootState.editor.inputQuery
     const defaultTitle = Date.create().format('{yyyy}/{MM}/{dd} {24hr}:{mm}:{ss}')
@@ -74,9 +75,10 @@ const actions = {
       commit('result/reset', {}, {root: true})
       commit('setHashItem', {queryid: '', bookmark_id: bookmarkId, tab: 'bookmark'}, {root: true})
     } catch (e) {
+      console.log(e)
     }
   },
-  async deleteBookmarkItem ({state, commit, dispatch, rootState}, {bookmarkId}) {
+  async deleteBookmarkItem ({commit, dispatch, rootState}, {bookmarkId}) {
     const {datasource, engine} = rootState.hash
     commit('deleteBookmark', {datasource, bookmarkId})
     await api.deleteBookmarkItem(datasource, engine, bookmarkId)

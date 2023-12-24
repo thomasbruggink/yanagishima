@@ -6,7 +6,7 @@
           <div id="header-upper" class="py-2">
             <div class="row align-items-center">
               <div class="col-6">
-                <h1 id="logo"><a :href="buildTopUrl()"><span id="logo-figure" class="mr-2"></span>{{sitename}}</a><span class="ml-2 font-weight-normal">{{version}}</span></h1>
+                <h1 id="logo"><a :href="buildTopUrl()"><span id="logo-figure" class="me-2"></span>{{sitename}}</a><span class="ms-2 font-weight-normal">{{version}}</span></h1>
               </div>
             </div>
           </div>
@@ -22,7 +22,7 @@
       <div class="container">
         <template v-if="loading">
           <div class="alert alert-info" role="alert">
-            <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+            <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
           </div>
         </template>
         <template v-else>

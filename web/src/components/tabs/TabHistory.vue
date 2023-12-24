@@ -2,7 +2,7 @@
   <div>
     <div class="header row align-items-center pt-3">
       <div class="col">
-        <strong class="mr-1">Executed History</strong>
+        <strong class="me-1">Executed History</strong>
         <template v-if="isLocalStorage">
           <span v-if="filteredHistory.length">{{filteredHistory.length}}</span>
         </template>
@@ -12,13 +12,13 @@
             <template v-if="response.total !== response.hit">
               /
               <span>{{response.total}}</span>
-              <span class="text-muted ml-1">({{(response.hit / response.total * 100).round()}}%)</span>
+              <span class="text-muted ms-1">({{(response.hit / response.total * 100).round()}}%)</span>
             </template>
           </template>
         </template>
         <template v-if="label">
           <button type="button" class="btn btn-sm btn-secondary" disabled>{{label}}</button>
-          <button type="button" class="btn btn-sm btn-secondary" @click="clearLabel"><i class="fa fa-fw fa-times mr-1"></i></button>
+          <button type="button" class="btn btn-sm btn-secondary" @click="clearLabel"><i class="fa fa-fw fa-times me-1"></i></button>
         </template>
       </div>
       <div class="col text-right">
@@ -36,7 +36,7 @@
     <div>
       <template v-if="loading">
         <div class="alert alert-info">
-          <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+          <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
         </div>
       </template>
       <template v-else>
@@ -67,7 +67,7 @@
               </td>
               <td>
                 <template v-if="isCompareMode">
-                  <input type="checkbox" class="mr-1" :value="h[0]" v-model="checkedQueries" :disabled="checkedQueries.length >= 2 && !checkedQueries.includes(h[0])" @change="compare"/>
+                  <input type="checkbox" class="me-1" :value="h[0]" v-model="checkedQueries" :disabled="checkedQueries.length >= 2 && !checkedQueries.includes(h[0])" @change="compare"/>
                 </template>
                 <a :href="buildUrl({datasource, engine, tab: 'result', queryid: h[0]})">{{h[0]}}</a>
               </td>
@@ -97,7 +97,7 @@
           </tbody>
         </table>
         <div v-else class="alert alert-warning">
-          <i class="fa fa-fw fa-frown-o mr-1"></i>No result
+          <i class="fa fa-fw fa-frown-o me-1"></i>No result
         </div>
         <div v-if="!isLocalStorage && hasMore" class="p-3 text-center">
           <button type="button" class="btn btn-primary" @click="getHistories(true)">More</button>

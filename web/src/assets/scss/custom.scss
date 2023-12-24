@@ -467,9 +467,9 @@ $colors: #444, $primary, #1b5e20, #880e4f, #827717, #212121, #4e342e, #37474f;
 .ace_tooltip {
   font-family: $font-family-sans-serif;
   padding: 0.2rem 0.5rem;
-  background: theme-color-level("danger", $alert-bg-level);
-  border: theme-color-level("danger", $alert-border-level) 1px solid;
-  color: theme-color-level("danger", $alert-color-level);
+  background: theme-color-level("danger", $danger);
+  border: theme-color-level("danger", $danger) 1px solid;
+  color: theme-color-level("danger", $danger);
   font-size: 12px;
 }
 

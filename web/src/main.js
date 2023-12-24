@@ -7,14 +7,12 @@ import 'toastr/toastr.scss'
 import 'lity'
 import 'lity/dist/lity.min.css'
 import toastr from 'toastr'
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
-import filters from '@/filters'
 import VueClipboards from 'vue-clipboards'
 import VueScrollTo from 'vue-scrollto'
-import VueCharts from 'vue-charts'
 import BaseAce from '@/components/base/BaseAce'
 import BaseAutoLink from '@/components/base/BaseAutoLink'
 import BaseHighlight from '@/components/base/BaseHighlight'
@@ -40,31 +38,23 @@ toastr.options = {
   hideMethod: 'fadeOut'
 }
 
-Vue.config.productionTip = false
+const app = createApp(App)
 
-Vue.use(VueClipboards)
-Vue.use(VueScrollTo)
-Vue.use(VueCharts)
+app.config.productionTip = false
 
-Vue.component('BaseAce', BaseAce)
-Vue.component('BaseAutoLink', BaseAutoLink)
-Vue.component('BaseHighlight', BaseHighlight)
+app.use(VueClipboards)
+app.use(VueScrollTo)
+app.use(router)
+app.use(store)
 
-Vue.directive('focus', {
+app.component('BaseAce', BaseAce)
+app.component('BaseAutoLink', BaseAutoLink)
+app.component('BaseHighlight', BaseHighlight)
+
+app.directive('focus', {
   inserted (el) {
     el.focus()
   }
 })
 
-for (const [key, val] of Object.entries(filters)) {
-  Vue.filter(key, val)
-}
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  components: {App},
-  template: '<App/>'
-})
+app.mount('#app')

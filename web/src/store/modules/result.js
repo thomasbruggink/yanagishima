@@ -56,14 +56,14 @@ const state = () => {
 const getters = {}
 
 const actions = {
-  async runQuery ({commit, dispatch, state, getters, rootState, rootGetters}, option) {
+  async runQuery ({commit, dispatch, rootState, rootGetters}, option) {
     const {datasource, engine} = rootState.hash
     const {authInfo, isPresto, isTrino, isHive, isSpark} = rootGetters
     const query = option && option.query ? option.query : rootState.editor.inputQuery
     const enableDesktopNotification = rootState.settings.desktopNotification
 
     commit('initComment')
-    commit('setHashItem', {queryid: '', chart: 0, pivot: 0, line: 0}, {root: true})
+    commit('setHashItem', {queryid: '', line: 0}, {root: true})
     commit('incrementRunningQueries')
     commit('setLoading', {data: true})
     commit('setError', {data: null})

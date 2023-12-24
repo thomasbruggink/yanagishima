@@ -8,8 +8,8 @@
         </div>
       </div>
       <div class="list-group list-group-flush">
-        <template v-for="h in history">
-          <a class="list-group-item" :class="{active: queryid === h[0]}" :key="h[0]"
+      <template v-for="h in history" :key="h[0]">
+          <a class="list-group-item" :class="{active: queryid === h[0]}"
              :href="buildUrl({datasource, engine, tab: 'result', queryid: h[0]})" :title="h[1]">
             <button class="btn btn-sm btn-secondary panel px-2" @click.stop.prevent="openBottomPanel(h[0])"><i
               class="fa fa-fw fa-columns fa-rotate-270"></i></button>

@@ -18,7 +18,7 @@
             </div>
             <div class="text-center">
               <button type="button" class="btn btn-sm btn-secondary" @click="testAuth"><i
-                class="fa fa-fw fa-check mr-1"></i>Login Check
+                class="fa fa-fw fa-check me-1"></i>Login Check
               </button>
             </div>
           </div>

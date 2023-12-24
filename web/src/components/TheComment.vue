@@ -5,7 +5,7 @@
       <div class="d-flex justify-content-between align-items-center">
         <div>
           <template v-if="visibleComment">
-            <i class="fa fa-commenting-o fa-flip-horizontal mr-1"></i>
+            <i class="fa fa-commenting-o fa-flip-horizontal me-1"></i>
             <template v-if="comment.edit">
               Comment on this result
             </template>
@@ -15,7 +15,7 @@
           </template>
           <template v-else>
             <a href="#" @click.prevent="setVisibleComment(true)">
-              <i class="fa fa-commenting fa-flip-horizontal mr-1"></i>
+              <i class="fa fa-commenting fa-flip-horizontal me-1"></i>
               <template v-if="comment.edit">
                 Comment on this result
               </template>
@@ -44,8 +44,8 @@
       <div class="d-flex justify-content-between align-items-center mb-2">
         <div>
           <button type="button" class="btn btn-sm btn-secondary" :disabled="comment.edit" @click="postCommentLike">
-            <i class="fa fa-thumbs-o-up mr-1"></i>Like
-            <span class="badge badge-pill badge-primary ml-1" v-if="comment.like">{{comment.like}}</span>
+            <i class="fa fa-thumbs-o-up me-1"></i>Like
+            <span class="badge badge-pill badge-primary ms-1" v-if="comment.like">{{comment.like}}</span>
           </button>
         </div>
         <div>
@@ -53,7 +53,7 @@
             <button type="button" class="btn btn-sm btn-primary px-3" @click="postComment"
                     :disabled="!inputComment.length">Post
             </button>
-            <button type="button" class="btn btn-sm btn-secondary ml-1" @click="setComment({edit: false})"
+            <button type="button" class="btn btn-sm btn-secondary ms-1" @click="setComment({edit: false})"
                     v-if="comment.content">Cancel
             </button>
           </template>

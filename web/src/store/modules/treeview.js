@@ -60,7 +60,7 @@ const actions = {
       dispatch('getTables')
     }
   },
-  async getCatalogs ({commit, dispatch, state, rootState, rootGetters}) {
+  async getCatalogs ({commit, state, rootState, rootGetters}) {
     const {datasource} = rootState.hash
     const {authInfo, isPresto, isTrino} = rootGetters
 

@@ -49,8 +49,6 @@ export const HASH_KEYS = [
   ['tab', true],
   ['queryid', false],
   ['bookmark_id', false],
-  ['chart', false],
-  ['pivot', false],
   ['line', false],
   ['table', false],
   ['where', false],
@@ -64,87 +62,6 @@ export const DATE_COLUMN_NAMES = [
   'yyyymmdd',
   'log_date'
 ]
-
-export const CHART_TYPES = {
-  1: {
-    name: 'Line Chart',
-    type: 'LineChart',
-    minRows: 2,
-    option: {}
-  },
-  2: {
-    name: 'Stacked Area Chart',
-    type: 'AreaChart',
-    minRows: 3,
-    option: {
-      isStacked: true
-    }
-  },
-  3: {
-    name: 'Full-Stacked Area Chart',
-    type: 'AreaChart',
-    minRows: 3,
-    option: {
-      isStacked: 'relative'
-    }
-  },
-  4: {
-    name: 'Column Chart',
-    type: 'ColumnChart',
-    minRows: 2,
-    option: {
-      isStacked: false
-    }
-  },
-  5: {
-    name: 'Stacked Column Chart',
-    type: 'ColumnChart',
-    minRows: 3,
-    option: {
-      isStacked: true
-    }
-  }
-}
-
-export const CHART_OPTIONS = {
-  width: '100%',
-  height: 360,
-  fontName: 'Droid Sans',
-  fontSize: 12,
-  chartArea: {
-    width: '80%'
-  },
-  legend: {
-    position: 'bottom',
-    textStyle: {
-      fontName: 'Droid Sans',
-      fontSize: 12
-    }
-  },
-  tooltip: {
-    textStyle: {
-      fontName: 'Droid Sans',
-      fontSize: 12
-    }
-  },
-  vAxis: {
-    minValue: 0,
-    gridlines: {
-      color: '#eee'
-    },
-    titleTextStyle: {
-      italic: false
-    }
-  },
-  hAxis: {
-    gridlines: {
-      color: '#eee'
-    },
-    titleTextStyle: {
-      italic: false
-    }
-  }
-}
 
 export const COMPLETE_LIST = {
   snippet: [

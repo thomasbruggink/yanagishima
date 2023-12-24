@@ -8,7 +8,7 @@
         </div>
         <div class="modal-body p-4">
           <section class="mb-5">
-            <h4 class="font-weight-bold mb-3"><i class="far fa-fw fa-keyboard mr-1"></i>HotKeys</h4>
+            <h4 class="font-weight-bold mb-3"><i class="far fa-fw fa-keyboard me-1"></i>HotKeys</h4>
             <table class="table table-fixed">
               <thead>
               <tr>
@@ -47,7 +47,7 @@
             </table>
           </section>
           <section class="mb-5">
-            <h4 class="font-weight-bold mb-3"><i class="fas fa-fw fa-dollar-sign mr-1"></i>Variable expansion</h4>
+            <h4 class="font-weight-bold mb-3"><i class="fas fa-fw fa-dollar-sign me-1"></i>Variable expansion</h4>
             <p class="px-3">You can use <strong>variables</strong> as <strong>${var}</strong> in query.</p>
             <table class="table table-fixed">
               <tbody>
@@ -57,14 +57,14 @@
                 </td>
                 <td class="w-25 text-right">
                   <a href="#" class="btn btn-sm btn-secondary" @click.prevent="variablesDemo"><i
-                    class="fa fa-fw fa-play mr-1"></i>Demo</a>
+                    class="fa fa-fw fa-play me-1"></i>Demo</a>
                 </td>
               </tr>
               </tbody>
             </table>
           </section>
           <section>
-            <h4 class="font-weight-bold mb-3"><i class="far fa-fw fa-chart-bar mr-1"></i>Chart Function</h4>
+            <h4 class="font-weight-bold mb-3"><i class="far fa-fw fa-chart-bar me-1"></i>Chart Function</h4>
             <table class="table table-fixed">
               <tbody>
               <tr>
@@ -73,7 +73,7 @@
                 </td>
                 <td class="w-25 text-right">
                   <a href="#" class="btn btn-sm btn-secondary" @click.prevent="chartDemo"><i
-                    class="fa fa-fw fa-play mr-1"></i>Demo</a>
+                    class="fa fa-fw fa-play me-1"></i>Demo</a>
                 </td>
               </tr>
               </tbody>
@@ -82,11 +82,11 @@
         </div>
         <div class="modal-footer">
           <a v-if="links.mailAdmin" :href="`mailto:${links.mailAdmin}`" class="btn btn-primary"><i
-            class="fa fa-fw fa-envelope-o mr-1"></i>Mail to Admin</a>
+            class="fa fa-fw fa-envelope-o me-1"></i>Mail to Admin</a>
           <a v-if="links.aboutThis" :href="links.aboutThis" class="btn btn-primary" target="wiki"><i
-            class="fa fa-fw fa-book mr-1"></i>About yanagishima</a>
+            class="fa fa-fw fa-book me-1"></i>About yanagishima</a>
           <a v-if="links.bugsFeedback" :href="links.bugsFeedback" class="btn btn-primary" target="bug"><i
-            class="fa fa-fw fa-bug mr-1"></i>Bugs and Feedback</a>
+            class="fa fa-fw fa-bug me-1"></i>Bugs and Feedback</a>
         </div>
       </div>
     </div>

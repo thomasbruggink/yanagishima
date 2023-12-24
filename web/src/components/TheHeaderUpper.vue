@@ -2,13 +2,13 @@
   <div id="header-upper" class="py-2">
     <div class="d-flex align-items-center justify-content-between">
       <div>
-        <h1 id="logo" class="d-inline-block mr-4">
+        <h1 id="logo" class="d-inline-block me-4">
           <a :href="buildUrl({datasource, engine})" @click.prevent="$emit('logo-click')">
-            <span id="logo-figure" class="mr-2"></span>{{sitename}}
+            <span id="logo-figure" class="me-2"></span>{{sitename}}
           </a>
         </h1>
-        <span class="mr-2">
-          <small>Source</small>
+        <span class="me-2">
+        <small>Source: </small>
           <template v-if="datasources && datasources.length > 1">
             <div class="dropdown d-inline-block">
               <button class="btn btn-sm btn-primary" data-toggle="dropdown">{{datasource}}</button>
@@ -22,8 +22,8 @@
             <strong>{{datasource}}</strong>
           </template>
         </span>
-        <span class="mr-2">
-          <small>Engine</small>
+        <span class="me-2">
+          <small>Engine: </small>
           <template v-if="engines[datasource] && engines[datasource].length > 1">
             <div class="dropdown d-inline-block">
               <button class="btn btn-sm btn-primary" data-toggle="dropdown">{{engine}}</button>
@@ -39,21 +39,21 @@
         </span>
       </div>
       <div>
-        <a href="#notification" class="text-white mr-2" data-toggle="modal" data-target="#notification">
+        <a href="#notification" class="text-white me-2" data-toggle="modal" data-target="#notification">
           <span class="notification-bell-wrapper" :class="{unread: hasNotificationUnread}"><i class="fas fa-lg fa-bell notification-bell"></i></span>
         </a>
         <template v-if="auths[datasource]">
-          <a href="#auth" class="text-white mr-2" data-toggle="modal" data-target="#auth">
+          <a href="#auth" class="text-white me-2" data-toggle="modal" data-target="#auth">
             <i v-if="authUser" class="fas fa-lg fa-user"></i>
             <i v-else class="fas fa-lg fa-user-times"></i>
           </a>
         </template>
-        <div class="dropdown d-inline-block mr-2">
+        <div class="dropdown d-inline-block me-2">
           <a href="#" data-toggle="dropdown" class="text-white"><i class="fa fa-lg fa-question"></i></a>
           <div class="dropdown-menu dropdown-menu-right" style="right: auto">
-            <small class="dropdown-item-text text-muted ml-2">Version {{version}}</small>
+            <small class="dropdown-item-text text-muted ms-2">Version {{version}}</small>
             <div class="dropdown-divider my-1"></div>
-            <a href="#help" class="dropdown-item mr-2" data-toggle="modal" data-target="#help">Help</a>
+            <a href="#help" class="dropdown-item me-2" data-toggle="modal" data-target="#help">Help</a>
             <a v-if="isPresto" href="https://prestodb.io/docs/current/" class="dropdown-item" target="_blank" rel="noopener">Presto Doc</a>
             <a v-if="isTrino" href="https://trino.io/docs/current/" class="dropdown-item" target="_blank" rel="noopener">Trino Doc</a>
             <a v-if="isHive" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual" class="dropdown-item" target="_blank" rel="noopener">Hive Doc</a>

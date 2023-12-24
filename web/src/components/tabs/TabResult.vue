@@ -5,45 +5,45 @@
         <template v-if="loading">
           <template v-if="runningProgress">
             <strong>Running</strong>
-            <span class="ml-2">{{runningQueryid}}</span>
+            <span class="ms-2">{{runningQueryid}}</span>
           </template>
           <strong v-else>Loading</strong>
         </template>
         <template v-else>
-          <span class="mr-3" v-if="response && response.error || error">
-            <strong class="text-danger mr-2">
-              <i class="fa fa-exclamation-triangle text-danger mr-1"></i>Error
+          <span class="me-3" v-if="response && response.error || error">
+            <strong class="text-danger me-2">
+              <i class="fa fa-exclamation-triangle text-danger me-1"></i>Error
             </strong>
             <span class="text-muted">{{queryid}}</span>
           </span>
-          <span class="mr-3" v-else-if="response && response.results">
+          <span class="me-3" v-else-if="response && response.results">
             <i class="fa fa-file-text-o" title="query ID" data-toggle="tooltip" data-animation="false"
                 data-placement="left"></i>
             <strong>{{queryid}}</strong>
           </span>
-          <span class="mr-3" v-else><strong>No result</strong></span>
-          <span class="mr-2" v-if="response && response.finishedTime">
+          <span class="me-3" v-else><strong>No result</strong></span>
+          <span class="me-2" v-if="response && response.finishedTime">
             <i class="fa fa-calendar" title="Finished time" data-toggle="tooltip" data-animation="false"
                 data-placement="left"></i>
             {{response.finishedTime | extractDate}}
           </span>
-          <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.elapsedTimeMillis">
+          <span class="me-2 d-md-none d-lg-inline" v-if="response && response.elapsedTimeMillis">
             <strong>{{(response.elapsedTimeMillis / 1000).ceil(2)}}</strong><span
-            class="text-muted ml-1">sec</span>
+            class="text-muted ms-1">sec</span>
           </span>
-          <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.rawDataSize">
-            <strong>{{response.rawDataSize.remove('B')}}</strong><span class="text-muted ml-1">byte</span>
+          <span class="me-2 d-md-none d-lg-inline" v-if="response && response.rawDataSize">
+            <strong>{{response.rawDataSize.remove('B')}}</strong><span class="text-muted ms-1">byte</span>
           </span>
-          <span class="mr-2" v-if="response && response.results && response.lineNumber">
+          <span class="me-2" v-if="response && response.results && response.lineNumber">
             <strong>{{response.results.length | formatNumber}}</strong>
             <template v-if="response.results.length !== response.lineNumber - 1">
               <span class="mx-1">/</span>
               <strong>{{response.lineNumber - 1 | formatNumber}}</strong>
             </template>
-            <span class="text-muted ml-1">results</span>
+            <span class="text-muted ms-1">results</span>
           </span>
-          <span class="mr-2 d-md-none d-lg-inline" v-if="response && response.headers">
-            <strong>{{response.headers.length}}</strong><span class="text-muted ml-1">columns</span>
+          <span class="me-2 d-md-none d-lg-inline" v-if="response && response.headers">
+            <strong>{{response.headers.length}}</strong><span class="text-muted ms-1">columns</span>
           </span>
         </template>
       </div>
@@ -56,11 +56,11 @@
           <div class="btn-group mx-2">
             <a :href="buildDownloadUrl(datasource, queryid, isCsv, includeHeader)" class="btn btn-sm btn-secondary"
                :class="{disabled: actionDisabled}" data-toggle="tooltip" data-html="true"
-               data-animation="false" title="Can change format in <i class='fa fa-cog'></i> setting"><i class="fa fa-fw fa-download"></i><span class="d-md-none d-lg-inline ml-1">Download</span></a>
+               data-animation="false" title="Can change format in settings"><i class="fa fa-fw fa-download"></i><span class="d-md-none d-lg-inline ms-1">Download</span></a>
           </div>
           <button class="btn btn-sm btn-secondary" :disabled="actionDisabled" @click="publish"
                   data-toggle="tooltip" data-animation="false" title="Publish Readonly Result">
-            <i class="fa fa-fw fa-globe"></i><span class="d-md-none d-lg-inline ml-1">Publish</span>
+            <i class="fa fa-fw fa-globe"></i><span class="d-md-none d-lg-inline ms-1">Publish</span>
           </button>
         </div>
       </template>
@@ -83,7 +83,7 @@
             <div class="col-2">
               <div class="btn-group">
                 <a href="#" class="btn btn-sm btn-secondary" @click.prevent="killQuery"><i
-                  class="fa fa-fw fa-times mr-1 text-danger"></i>Kill</a>
+                  class="fa fa-fw fa-times me-1 text-danger"></i>Kill</a>
                 <a class="btn btn-sm btn-secondary" :href="buildDetailUrl(isPresto, isHive, isSpark, isTrino, datasource, runningQueryid)"
                    :target="'_blank'"><i class="fa fa-fw fa-info"></i>Info</a>
               </div>
@@ -91,12 +91,12 @@
           </div>
         </div>
         <div v-else class="alert alert-info">
-          <i class="fa fa-fw fa-spinner fa-spin mr-1"></i>Preparing
+          <i class="fa fa-fw fa-spinner fa-spin me-1"></i>Preparing
         </div>
       </template>
       <template v-else>
         <div class="alert alert-info">
-          <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+          <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
         </div>
       </template>
     </template>
@@ -153,52 +153,10 @@
               <template v-else>
                 <div v-if="line" class="alert alert-info">
                   <button class="close" @click="resetLine"><span>&times;</span></button>
-                  <i class="fa fa-fw fa-check mr-1"></i>
+                  <i class="fa fa-fw fa-check me-1"></i>
                   <a href="#" class="alert-link" v-scroll-to="'#L' + line">Line {{line}}</a> is selected
                 </div>
                 <template v-if="response.results">
-                  <div v-if="enableChart" class="mb-3">
-                    <div v-if="chart" class="card">
-                      <div class="card-header">
-                        <div class="row align-items-center">
-                          <div class="col">
-                            <div v-for="(val, key) in validChartTypes" :key="key" class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" :id="`chart${val.name}Radio`" v-model="chartModel" :value="key">
-                              <label class="form-check-label" :for="`chart${val.name}Radio`">{{val.name}}</label>
-                            </div>
-                          </div>
-                          <div class="col-1">
-                            <button type="button" class="close" @click="setChart(0)"><span>&times;</span></button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <vue-chart :key="chart" :chart-type="validChartTypes[chart].type" :columns="chartColumns" :rows="chartRows"
-                                   :options="Object.assign({}, chartOptions, validChartTypes[chart].option)" />
-                        <div v-if="response.lineNumber > 501" class="text-right text-muted">
-                          This data is only top 500.
-                        </div>
-                      </div>
-                    </div>
-                    <a v-else href="#" @click.prevent="setChart(1)">
-                      <i class="fa fa-fw fa-plus-square mr-1"></i>Chart
-                    </a>
-                  </div>
-                  <div v-if="enablePivot" class="mb-3">
-                    <div v-if="pivot" class="card">
-                      <div class="card-header">
-                        <button type="button" class="close" @click="setPivot(0)"><span>&times;</span></button>
-                        <div class="card-body">
-                          <pivot :data="pivotRows" :fields="[]" :row-fields="rowFields" :col-fields="colFields" :reducer="reducer" :default-show-settings="false">
-                          </pivot>
-                          <div v-if="response.lineNumber > 501" class="text-right text-muted">
-                            This data is only top 500.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <a v-else href="#" @click.prevent="setPivot(1)"><i class="fa fa-fw fa-plus-square mr-1"></i>Pivot(Beta)</a>
-                  </div>
                   <ResultTable :result="response" :pretty="isPretty" :line="line" @line-click="toggleLine"/>
                 </template>
               </template>
@@ -215,19 +173,13 @@ import {mapState, mapGetters} from 'vuex'
 import toastr from 'toastr'
 import ResultTable from '@/components/ResultTable'
 import util from '@/mixins/util'
-import chart from '@/mixins/chart'
-import pivot from '@/mixins/pivot'
-import {CHART_TYPES, CHART_OPTIONS} from '@/constants'
-import Pivot from '@marketconnect/vue-pivot-table'
 
 export default {
   name: 'TabResult',
-  components: {ResultTable, Pivot},
-  mixins: [util, chart, pivot],
+  components: {ResultTable},
+  mixins: [util],
   data () {
     return {
-      chartTypes: CHART_TYPES,
-      chartOptions: CHART_OPTIONS,
       explainGraphResult: null,
       inputLabel: null
     }
@@ -237,8 +189,6 @@ export default {
       datasource: state => state.hash.datasource,
       queryid: state => state.hash.queryid,
       line: state => state.hash.line,
-      chart: state => state.hash.chart,
-      pivot: state => state.hash.pivot,
       isCsv: state => state.settings.isCsv,
       includeHeader: state => state.settings.includeHeader
     }),
@@ -339,12 +289,6 @@ export default {
     resetLine () {
       this.$store.commit('setHashItem', {line: 0})
     },
-    setChart (chart) {
-      this.$store.commit('setHashItem', {chart})
-    },
-    setPivot (pivot) {
-      this.$store.commit('setHashItem', {pivot})
-    },
     killQuery () {
       this.$store.dispatch('result/killQuery', {queryid: this.runningQueryid})
     },
@@ -355,12 +299,6 @@ export default {
             return
           }
           let path = `/share/?${publishId}`
-          if (this.chart) {
-            path += `&${this.chart}`
-          }
-          if (this.pivot) {
-            path += '&pivot'
-          }
           if (this.line) {
             path += `#L${this.line}`
           }

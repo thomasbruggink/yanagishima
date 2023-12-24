@@ -2,7 +2,7 @@
   <div>
     <div class="header row align-items-center pt-3">
       <div class="col">
-        <strong class="mr-1">Timeline</strong>
+        <strong class="me-1">Timeline</strong>
         <span v-if="timelines.length">{{timelines.length}}</span>
       </div>
       <div class="col text-right">
@@ -14,7 +14,7 @@
     <div>
       <template v-if="loading.timeline">
         <div class="alert alert-info">
-          <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+          <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
         </div>
       </template>
       <template v-else>
@@ -49,7 +49,7 @@
           </tbody>
         </table>
         <div class="alert alert-warning" v-else>
-          <i class="fa fa-fw fa-frown-o mr-1"></i>No result
+          <i class="fa fa-fw fa-frown-o me-1"></i>No result
         </div>
       </template>
     </div>

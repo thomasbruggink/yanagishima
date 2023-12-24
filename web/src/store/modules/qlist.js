@@ -48,6 +48,7 @@ const actions = {
         commit('setResponse', {data})
       }
     } catch (e) {
+      console.log(e)
     }
 
     commit('setLoading', {data: false})

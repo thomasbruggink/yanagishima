@@ -36,6 +36,7 @@ import Favico from 'favico.js'
 import TheSettings from '@/components/TheSettings'
 import TheHeader from '@/components/TheHeader'
 import TheContent from '@/components/TheContent'
+import { Tooltip } from 'bootstrap'
 import TheFooter from '@/components/TheFooter'
 import ModalNotification from '@/components/modals/ModalNotification'
 import ModalHelp from '@/components/modals/ModalHelp'
@@ -176,7 +177,9 @@ export default {
   mounted () {
     const self = this
 
-    $('body').tooltip({selector: '[data-toggle="tooltip"]'})
+    new Tooltip(document.body, {
+      selector: '[data-toggle="tooltip"]'
+    })
 
     $(document).on('shown.bs.modal', '.modal', function () {
       self.$store.commit('setIsModal', true)

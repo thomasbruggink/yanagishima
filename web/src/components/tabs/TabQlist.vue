@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="header d-flex justify-content-between align-items-center pt-3">
-      <span><strong class="mr-2">{{datasource}}</strong>as of<strong class="ml-2">{{now}}</strong></span>
+      <span><strong class="me-2">{{datasource}}</strong>as of<strong class="ms-2">{{now}}</strong></span>
       <div class="d-flex align-items-center">
         <div class="form-check form-check-inline" v-if="isPresto || isTrino">
-          <input class="form-check-input mr-1" type="checkbox" id="fullQueryCheckbox" v-model="isOpenQueryModel">
+          <input class="form-check-input me-1" type="checkbox" id="fullQueryCheckbox" v-model="isOpenQueryModel">
           <label class="form-check-label" for="fullQueryCheckbox">Full Query</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input mr-1" type="checkbox" id="adminModeCheckbox" v-model="isAdminModeModel">
+          <input class="form-check-input me-1" type="checkbox" id="adminModeCheckbox" v-model="isAdminModeModel">
           <label class="form-check-label" for="adminModeCheckbox">Admin Mode</label>
         </div>
         <button class="btn btn-sm btn-secondary" @click="getQlist">
-          <i class="fa fa-fw fa-sync mr-1"></i>Refresh
+          <i class="fa fa-fw fa-sync me-1"></i>Refresh
         </button>
       </div>
     </div>
@@ -20,16 +20,16 @@
     <div>
       <template v-if="loading">
         <div class="alert alert-info">
-          <i class="fa fa-fw fa-spinner fa-pulse mr-1"></i>Loading
+          <i class="fa fa-fw fa-spinner fa-pulse me-1"></i>Loading
         </div>
       </template>
       <template v-else>
         <div v-if="filterUser !== '' || filterSource !== ''" class="alert alert-info">
           <button class="close" @click="setFilter('', '')"><span>&times;</span></button>
-          <span v-if="filterUser !== ''" class="mr-3">User Filter by <strong>{{filterUser}}</strong></span>
-          <span v-else class="mr-3">Source Filter by <strong>{{filterSource}}</strong></span>
-          <span class="mr-2"><strong>{{orderedQlist.length}}</strong> Results</span>
-          <span class="mr-2" v-if="orderedFailQlist.length"><strong>{{orderedFailQlist.length}}</strong> Fails</span>
+          <span v-if="filterUser !== ''" class="me-3">User Filter by <strong>{{filterUser}}</strong></span>
+          <span v-else class="me-3">Source Filter by <strong>{{filterSource}}</strong></span>
+          <span class="me-2"><strong>{{orderedQlist.length}}</strong> Results</span>
+          <span class="me-2" v-if="orderedFailQlist.length"><strong>{{orderedFailQlist.length}}</strong> Fails</span>
         </div>
         <template v-if="isPresto || isTrino">
           <table v-if="orderedQlist.length" class="table table-sm table-bordered table-fixed table-hover">
@@ -86,7 +86,7 @@
             </tbody>
           </table>
           <div class="alert alert-warning" v-else>
-            <i class="fa fa-fw fa-frown-o mr-1"></i>No result
+            <i class="fa fa-fw fa-frown-o me-1"></i>No result
           </div>
         </template>
         <template v-else-if="isHive">
@@ -136,7 +136,7 @@
             </tbody>
           </table>
           <div class="alert alert-warning" v-else>
-            <i class="fa fa-fw fa-frown-o mr-1"></i>No result
+            <i class="fa fa-fw fa-frown-o me-1"></i>No result
           </div>
         </template>
         <template v-else-if="isSpark">
@@ -181,7 +181,7 @@
             </tbody>
           </table>
           <div class="alert alert-warning" v-else>
-            <i class="fa fa-fw fa-frown-o mr-1"></i>No result
+            <i class="fa fa-fw fa-frown-o me-1"></i>No result
           </div>
         </template>
       </template>

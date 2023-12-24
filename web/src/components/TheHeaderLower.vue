@@ -10,10 +10,10 @@
     <fieldset v-if="variables.length" id="variables" class="mb-3">
       <legend>{{variables.length}} variables</legend>
       <div class="form-inline">
-        <template v-for="v in variables">
-          <label class="mr-2" :key="`label_${v.key}`">{{v.key}}</label>
-          <input type="text" :id="`variable_${v.key}`" v-model="v.value" :key="`input_${v.key}`"
-                 class="form-control form-control-sm mr-3" size="10" autocomplete="off">
+        <template v-for="v in variables" :key="v.key">
+          <label class="me-2">{{v.key}}</label>
+          <input type="text" :id="`variable_${v.key}`" v-model="v.value"
+                 class="form-control form-control-sm me-3" size="10" autocomplete="off">
         </template>
       </div>
     </fieldset>
@@ -22,14 +22,14 @@
         <ul class="nav nav-tabs">
           <li class="nav-item" v-for="t in tabs" :key="t.id">
             <a class="nav-link" href="#" @click.prevent="setTab(t.id)" :class="{active: t.id === tab}">
-              <i class="fa-fw mr-1" :class="`${t.iconStyle || 'fas'} fa-${t.icon}`"></i><span class="d-none d-xl-inline">{{t.name}}</span>
+              <i class="fa-fw me-1" :class="`${t.iconStyle || 'fas'} fa-${t.icon}`"></i><span class="d-none d-xl-inline">{{t.name}}</span>
             </a>
           </li>
         </ul>
       </div>
       <div class="col text-right pb-2">
         <div id="control" class="d-inline-block">
-          <div class="btn-group ml-3">
+          <div class="btn-group ms-3">
             <button type="button" class="btn btn-secondary px-2" @click.prevent="convertQuery"
                     data-toggle="tooltip" data-animation="false" title="Convert Query"
                     :disabled="!inputQuery.length || loading"><i class="fa fa-fw fa-exchange"></i>
@@ -46,9 +46,9 @@
                     data-toggle="tooltip" data-animation="false" title="Add to Bookmarks"
                     :disabled="!inputQuery.length || existBookmark"><i class="far fa-fw fa-star"></i></button>
           </div>
-          <div class="btn-group ml-3">
+          <div class="btn-group ms-3">
             <button type="button" class="btn btn-primary" :disabled="!runnable"
-                  @click="runQuery()"><i class="fa fa-fw fa-play mr-1"></i><strong>Run</strong>
+                  @click="runQuery()"><i class="fa fa-fw fa-play me-1"></i><strong>Run</strong>
             </button>
             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" :disabled="!runnable">
               <span class="sr-only">Toggle Dropdown</span>

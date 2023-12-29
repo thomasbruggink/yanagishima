@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%; height: 100%"></div>
+  <div></div>
 </template>
 
 <script>
@@ -100,9 +100,6 @@ export default {
     },
     maxLines (val) {
       this.ace.setOptions({maxLines: val})
-    },
-    completeWords () {
-      this.startAutoComplete()
     }
   },
   mounted () {
@@ -135,8 +132,20 @@ export default {
     } else {
       a.setOptions({
         minLines: this.minLines || 4,
-        maxLines: this.maxLines || 16
+        maxLines: this.maxLines || 16,
+        enableSnippets: true,
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true
       })
+
+      const langTools = ace.require('ace/ext/language_tools')
+      const here = this
+      const completers = {
+        getCompletions (editor, session, pos, prefix, callback) {
+          callback(null, here.completeWords)
+        }
+      }
+      langTools.setCompleters([completers])
 
       a.on('change', () => {
         const value = a.getValue()
@@ -171,23 +180,6 @@ export default {
     }
 
     this.ace = a
-  },
-  methods: {
-    startAutoComplete () {
-      const langTools = ace.require('ace/ext/language_tools')
-      const completeWords = this.completeWords
-      const completers = {
-        getCompletions (editor, session, pos, prefix, callback) {
-          callback(null, completeWords)
-        }
-      }
-      langTools.setCompleters([completers])
-      this.ace.setOptions({
-        enableSnippets: true,
-        enableBasicAutocompletion: true,
-        enableLiveAutocompletion: false
-      })
-    }
   }
 }
 </script>

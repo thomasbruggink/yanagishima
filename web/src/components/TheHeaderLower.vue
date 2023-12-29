@@ -4,7 +4,7 @@
       <BaseAce :code="inputQuery" :goto-line="gotoLine" :focus="focus" :min-lines="settings.minline" :max-lines="Infinity"
            :theme="settings.theme" @change-code="setInputQuery" @run-code="runQuery"
            :error-line="errorLine" :error-text="tinyErrorText" :readonly="loading"
-           :complete-words="(isPresto || isTrino) ? completeWords : []"
+           :complete-words="(isPresto || isTrino) ? getCompletedWords() : []"
            @format-code="(isPresto || isTrino) ? formatQuery() : () => {}" @validate-code="(isPresto || isTrino) ? validateQuery() : () => {}"></BaseAce>
     </div>
     <fieldset v-if="variables.length" id="variables" class="mb-3">
@@ -72,6 +72,7 @@
 <script>
 import {mapState, mapGetters} from 'vuex'
 import {TABS} from '@/constants'
+import {toRaw} from "vue"
 
 export default {
   name: 'TheHeaderLower',
@@ -150,6 +151,9 @@ export default {
   methods: {
     setInputQuery (query) {
       this.$store.commit('editor/setInputQuery', {data: query})
+    },
+    getCompletedWords() {
+      return toRaw(this.completeWords)
     },
     formatQuery () {
       this.$store.dispatch('editor/formatQuery')
